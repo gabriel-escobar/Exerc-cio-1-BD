@@ -9,6 +9,8 @@ Scripts
 --------------------------------------
 CreateDatabase.sql - esse script gera um banco de dados chamado cxcommerce, caso não exista, e suas respectivas tabelas (produto, item, preco, cliente, endereco e carrinho, conforme a modelagem abaixo)
 
+![image](https://user-images.githubusercontent.com/70555750/213212824-f7212dca-4da7-419f-8eda-10aeeb1df75d.png)
+
 PopulateDatabase.sql - popula a database conforme orientação da atividade, podendo ter alguma coisa a mais do que o solicitado.  
 
 OperationsOnDatabase.sql - mostra as principais consultas para esse banco de dados, que são:  
