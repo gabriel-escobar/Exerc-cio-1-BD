@@ -1,10 +1,10 @@
---Update Item
+--Atualiza o valor total dos items no carrinho
 update item i 
 join cxcommerce.carrinho c  ON c.id = i.carrinho_id
 join cxcommerce.cliente cl ON c.cliente_id = cl.id
 join cxcommerce.preco p ON i.preco_id = p.id
 set i.total = i.quantidade * p.valor;
---Update Carrinho
+--Atualiza e soma o valor total do carrinho
 update cxcommerce.carrinho c,
 (select carrinho_id, SUM(total) as TOTAL from item group by carrinho_id) 
 as I 
