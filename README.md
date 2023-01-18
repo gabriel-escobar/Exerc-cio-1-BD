@@ -1,2 +1,3 @@
 # Exerc-cio-1-BD
-Repositório para subir os arquivos de banco de dados no primeiro exercício.
+Nada especial na criação do banco. 
+A única alteração a alteração de UF para INT(2), pois usei os códigos para emissão de nota fiscal como refêrencia dos códigos para UF.
