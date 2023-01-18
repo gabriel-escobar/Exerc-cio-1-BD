@@ -2,6 +2,7 @@ drop  database if exists CXCommerce;
 
 create database if not exists CXCommerce;
 
+use database CXcommerce
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
