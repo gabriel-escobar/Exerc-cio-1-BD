@@ -1,0 +1,143 @@
+drop  database if exists CXCommerce;
+
+create database if not exists CXCommerce;
+
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema cxcommerce
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema cxcommerce
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `cxcommerce` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `cxcommerce` ;
+
+-- -----------------------------------------------------
+-- Table `cxcommerce`.`cliente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cxcommerce`.`cliente` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cpf` VARCHAR(11) NULL DEFAULT NULL,
+  `nome` VARCHAR(100) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `cxcommerce`.`carrinho`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cxcommerce`.`carrinho` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `total` DECIMAL(6,2) NULL DEFAULT NULL,
+  `horaCompra` DATETIME NULL DEFAULT NULL,
+  `cliente_id` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `cliente_id` (`cliente_id` ASC) VISIBLE,
+  CONSTRAINT `carrinho_ibfk_1`
+    FOREIGN KEY (`cliente_id`)
+    REFERENCES `cxcommerce`.`cliente` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `cxcommerce`.`endereco`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cxcommerce`.`endereco` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `CEP` VARCHAR(8) NULL DEFAULT NULL,
+  `logradouro` VARCHAR(100) NULL DEFAULT NULL,
+  `bairro` VARCHAR(100) NULL DEFAULT NULL,
+  `cidade` VARCHAR(100) NULL DEFAULT NULL,
+  `numero` VARCHAR(20) NULL DEFAULT NULL,
+  `UF` INT(2) NOT NULL,
+  `cliente_id` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `cliente_id` (`cliente_id` ASC) VISIBLE,
+  CONSTRAINT `endereco_ibfk_1`
+    FOREIGN KEY (`cliente_id`)
+    REFERENCES `cxcommerce`.`cliente` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `cxcommerce`.`produto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cxcommerce`.`produto` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `skuCode` VARCHAR(50) NULL DEFAULT NULL,
+  `nome` VARCHAR(100) NULL DEFAULT NULL,
+  `quantidadeTotal` INT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `cxcommerce`.`preco`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cxcommerce`.`preco` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `valor` DECIMAL(6,2) NULL DEFAULT NULL,
+  `produto_id` INT NULL DEFAULT NULL,
+  `cliente_id` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `produto_id` (`produto_id` ASC) VISIBLE,
+  INDEX `cliente_id` (`cliente_id` ASC) VISIBLE,
+  CONSTRAINT `preco_ibfk_1`
+    FOREIGN KEY (`produto_id`)
+    REFERENCES `cxcommerce`.`produto` (`id`),
+  CONSTRAINT `preco_ibfk_2`
+    FOREIGN KEY (`cliente_id`)
+    REFERENCES `cxcommerce`.`cliente` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `cxcommerce`.`item`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cxcommerce`.`item` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `quantidade` INT NULL DEFAULT NULL,
+  `total` decimal(6,2) NULL DEFAULT NULL,
+  `preco_id` INT NULL DEFAULT NULL,
+  `produto_id` INT NULL DEFAULT NULL,
+  `carrinho_id` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `produto_id` (`produto_id` ASC) VISIBLE,
+  INDEX `preco_id` (`preco_id` ASC) VISIBLE,
+  INDEX `carrinho_id` (`carrinho_id` ASC) VISIBLE,
+  CONSTRAINT `item_ibfk_1`
+    FOREIGN KEY (`produto_id`)
+    REFERENCES `cxcommerce`.`produto` (`id`),
+  CONSTRAINT `item_ibfk_2`
+    FOREIGN KEY (`preco_id`)
+    REFERENCES `cxcommerce`.`preco` (`id`),
+  CONSTRAINT `item_ibfk_3`
+    FOREIGN KEY (`carrinho_id`)
+    REFERENCES `cxcommerce`.`carrinho` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
