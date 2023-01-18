@@ -10,7 +10,7 @@ JOIN preco ON item.preco_id = preco.id;
 SELECT produto.nome, item.quantidade, item.total, preco.valor AS valor_unitario, (item.quantidade * preco.valor) as valor_total
 FROM item
 JOIN produto ON item.produto_id = produto.id
-JOIN preco ON item.preco_id = preco.id
+JOIN preco ON item.preco_id = preco.id;
 
 
 
