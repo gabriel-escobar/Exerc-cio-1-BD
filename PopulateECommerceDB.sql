@@ -23,16 +23,24 @@ INSERT INTO endereco (cep, logradouro, numero, bairro, cidade, uf, cliente_id)
 VALUES ('67890234', 'Rua 6', '6', 'Bairro 6', 'Cidade 6', 'SP', 3);
 
 INSERT INTO carrinho (datahora, total, cliente_id)
-VALUES (NOW(), 50.00, 1);
+VALUES (NOW(), 90.00, 1);
 
 INSERT INTO carrinho (datahora, total, cliente_id)
-VALUES (NOW(), 100.00, 2);
+VALUES (NOW(), 70.00, 2);
+
+INSERT INTO carrinho (datahora, total, cliente_id)
+VALUES (NOW(), 100.00, 3);
+
 
 INSERT INTO item (quantidade, total, produto_id, carrinho_id)
 VALUES (1, 10.00, 1, 1);
 INSERT INTO item (quantidade, total, produto_id, carrinho_id)
-VALUES (2, 20.00, 2, 1);
+VALUES (2, 80.00, 4, 1);
 INSERT INTO item (quantidade, total, produto_id, carrinho_id)
-VALUES (1, 50.00, 4, 2);
+VALUES (1, 40.00, 4, 2);
 INSERT INTO item (quantidade, total, produto_id, carrinho_id)
-VALUES (1, 40.00, 3, 2);
+VALUES (1, 30.00, 3, 2);
+INSERT INTO item (quantidade, total, produto_id, carrinho_id)
+VALUES (1, 40.00, 4, 3);
+INSERT INTO item (quantidade, total, produto_id, carrinho_id)
+VALUES (2, 60.00, 3, 3);
