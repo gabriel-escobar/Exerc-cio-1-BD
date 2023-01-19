@@ -1,5 +1,5 @@
 # CreateDatabase.sql
 
-Script para criar o banco de dados.
+Script para inserir os dados no banco.
 
 
