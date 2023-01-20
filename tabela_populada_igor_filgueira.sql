@@ -1,0 +1,127 @@
+INSERT INTO produto (sku, nome)
+VALUES 
+    ("SKU0001", "Placa de vídeo"),
+    ("SKU0002", "Memória RAM"),
+    ("SKU0003", "HD"),
+    ("SKU0004", "SSD"),
+    ("SKU0005", "Placa Mãe"),
+    ("SKU0006", "Processador"),
+    ("SKU0007", "Cooler"),
+    ("SKU0008", "Gabinete");
+
+INSERT INTO item (quantidade, total, produto_id, preco_id, carrinho_id)
+VALUES 
+    (1, 10.50, 1, 1, 1),
+    (2, 20.00, 2, 2, 2),
+    (3, 30.00, 3, 3, 3),
+    (4, 40.00, 4, 4, 4),
+    (5, 50.00, 5, 5, 5);
+
+INSERT INTO carrinho (datahora, total, cliente_id)
+VALUES
+    ('2022-01-01 10:00:00', 100.50, 1),
+    ('2022-01-01 12:00:00', 150.00, 2),
+    ('2022-01-01 14:00:00', 75.25, 3),
+    ('2022-01-01 16:00:00', 50.50, 4),
+    ('2022-01-02 10:00:00', 125.00, 5),
+    ('2022-01-02 12:00:00', 90.50, 6),
+    ('2022-01-02 14:00:00', 110.75, 7),
+    ('2022-01-02 16:00:00', 60.00, 8);
+
+INSERT INTO preco (valor, produto_id, cliente_id) 
+VALUES
+    (100.00, 1, 1),
+    (120.50, 2, 1),
+    (150.00, 3, 1),
+    (200.00, 4, 1),
+    (205.00, 5, 1),
+    (380.00, 6, 1),
+    (395.00, 7, 1),
+    (460.00, 8, 1),
+    (161.00, 1, 2),
+    (183.50, 2, 2),
+    (166.00, 3, 2),
+    (281.00, 4, 2),
+    (266.00, 5, 2),
+    (381.00, 6, 2),
+    (366.00, 7, 2),
+    (471.00, 8, 2),
+    (132.00, 1, 3),
+    (141.50, 2, 3),
+    (174.00, 3, 3),
+    (225.00, 4, 3),
+    (276.00, 5, 3),
+    (342.00, 6, 3),
+    (367.00, 7, 3),
+    (422.00, 8, 3),
+    (123.00, 1, 4),
+    (125.50, 2, 4),
+    (148.00, 3, 4),
+    (235.00, 4, 4),
+    (286.00, 5, 4),
+    (332.00, 6, 4),
+    (381.00, 7, 4),
+    (443.00, 8, 4),
+    (174.00, 1, 5),
+    (186.50, 2, 5),
+    (159.00, 3, 5),
+    (244.00, 4, 5),
+    (239.00, 5, 5),
+    (364.00, 6, 5),
+    (339.00, 7, 5),
+    (444.00, 8, 5),
+    (154.00, 1, 6),
+    (175.50, 2, 6),
+    (260.00, 3, 6),
+    (235.00, 4, 6),
+    (306.00, 5, 6),
+    (325.00, 6, 6),
+    (420.00, 7, 6),
+    (435.00, 8, 6),
+    (156.00, 1, 7),
+    (168.50, 2, 7),
+    (217.00, 3, 7),
+    (246.00, 4, 7),
+    (371.00, 5, 7),
+    (356.00, 6, 7),
+    (461.00, 7, 7),
+    (436.00, 8, 7),
+    (460.00, 8, 8),
+    (141.00, 1, 8),
+    (163.50, 2, 8),
+    (165.00, 3, 8),
+    (231.00, 4, 8),
+    (226.00, 5, 8),
+    (314.00, 6, 8),
+    (366.00, 7, 8),
+    (441.00, 8, 8);
+
+INSERT INTO cliente (cpf, nome) VALUES
+    ("12345678901", "João Silva"),
+    ("23456789012", "Maria Costa"),
+    ("34567890123", "José Ferreira"),
+    ("45678901234", "Lucas Oliveira"),
+    ("56789012345", "Ana Paula"),
+    ("67890123456", "Felipe Santos"),
+    ("78901234567", "Juliana Almeida"),
+    ("89012345678", "Carlos Silva");
+    
+INSERT INTO endereco (cep, logradouro, numero, bairro, cidade, uf, cliente_id) VALUES
+    ('12345678', 'Rua dos Bobos', '0', 'Bairro dos Bobos', 'Cidade dos Bobos', 'PR', 1),
+    ('87654321', 'Avenida das Flores', '1', 'Bairro das Flores', 'Cidade das Flores', 'PR', 1),
+    ('11111111', 'Rua dos Pássaros', '2', 'Bairro dos Pássaros', 'Cidade dos Pássaros', 'PR', 2),
+    ('22222222', 'Avenida dos Bichos', '3', 'Bairro dos Bichos', 'Cidade dos Bichos', 'PR', 2),
+    ('33333333', 'Rua dos Animais', '4', 'Bairro dos Animais', 'Cidade dos Animais', 'PR', 3),
+    ('44444444', 'Avenida das Árvores', '5', 'Bairro das Árvores', 'Cidade das Árvores', 'PR', 3),
+    ('55555555', 'Rua dos Rios', '6', 'Bairro dos Rios', 'Cidade dos Rios', 'PR', 4),
+    ('66666666', 'Avenida das Montanhas', '7', 'Bairro das Montanhas', 'Cidade das Montanhas', 'PR', 4);
+
+INSERT INTO endereco2 (cep, logradouro, numero, bairro, cidade, uf, cliente_id) VALUES
+    ('11111111', 'Rua das Flores', '1', 'Bairro das Flores', 'Cidade das Flores', 'PR', 5),
+    ('56789098', 'Rua das Árvores', '2', 'Bairro das Árvores', 'Cidade das Árvores', 'PR', 5),
+    ('01234567', 'Rua dos Pássaros', '3', 'Bairro dos Pássaros', 'Cidade dos Pássaros', 'PR', 6),
+    ('76543213', 'Rua dos Animais', '4', 'Bairro dos Animais', 'Cidade dos Animais', 'PR', 6),
+    ('55555555', 'Rua dos Rios', '6', 'Bairro dos Rios', 'Cidade dos Rios', 'PR', 7),
+    ('66666666', 'Avenida das Montanhas', '7', 'Bairro das Montanhas', 'Cidade das Montanhas', 'PR', 7),
+    ('43211234', 'Rua dos Rios', '6', 'Bairro dos Rios', 'Cidade dos Rios', 'PR', 8),
+    ('67891234', 'Avenida das Montanhas', '7', 'Bairro das Montanhas', 'Cidade das Montanhas', 'PR', 8);
